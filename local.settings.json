@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=chatbotstorage2606;AccountKey=KDITkVnuThJBcIl4Do9RBgMZsRkBdPNsThG1EzI9nOdoIS5dAGMOYO9peLc1lM0Y1qGkLBIuY27N+AStKcfJPg==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+    "PYTHON_ENABLE_WORKER_EXTENSIONS": "1",
+    "AZURE_OPENAI_API_KEY":"fd2e0aa746cf48efa326e6c360915d88",
+    "AZURE_OPENAI_API_BASE":"https://openai-arch-v.openai.azure.com/",
+    "AZURE_OPENAI_DEPLOYMENT_NAME":"slp-chatbot-text-summary",
+    "AZURE_SUBSCRIPTION_ID": "bfb59099-69db-4d2b-887e-abcf6ccdb5c4"
+  }
+}
