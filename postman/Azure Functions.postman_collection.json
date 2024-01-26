@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "94c41344-4005-4b81-a505-e82de9431680",
+		"name": "Azure Functions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8453144"
+	},
+	"item": [
+		{
+			"name": "greeting (local)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Tonio Alvianda\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/greeting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"greeting"
+					],
+					"query": [
+						{
+							"key": "api-key",
+							"value": "sss",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listcompletions (remote)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"cmpl-4kGh7iXtjW4lc9eGhff6Hp8C7btdQ\",\r\n    \"object\": \"text_completion\",\r\n    \"created\": 1646932609,\r\n    \"model\": \"ada\",\r\n    \"choices\": [\r\n        {\r\n            \"text\": \", a dark line crossed\",\r\n            \"index\": 0,\r\n            \"logprobs\": null,\r\n            \"finish_reason\": \"length\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://openai-arch-v.openai.azure.com/openai/deployments/slp-chatbot-text-summary/completions?api-version=2023-09-15-preview",
+					"protocol": "https",
+					"host": [
+						"openai-arch-v",
+						"openai",
+						"azure",
+						"com"
+					],
+					"path": [
+						"openai",
+						"deployments",
+						"slp-chatbot-text-summary",
+						"completions"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2023-09-15-preview"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listresourcegroup (local)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"resgrp\":\"alvaz-poc-rg\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/listresourcegroup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"listresourcegroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listresourcegroup (remote)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"resgrp\":\"alvaz-poc-rg\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chatbotfuncsapp.azurewebsites.net/api/listresourcegroup?code=ERmWnPLVPYTYajTmvLZwp2v2terkMJtefwIM_-MGNSq0AzFuMIJmEA==",
+					"protocol": "https",
+					"host": [
+						"chatbotfuncsapp",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"listresourcegroup"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "ERmWnPLVPYTYajTmvLZwp2v2terkMJtefwIM_-MGNSq0AzFuMIJmEA=="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "textsummary (local)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\":\"A horrific accident in India killed a Chicago area tech CEO and seriously injured the company's president, and the whole thing was caught on video. What was designed to be a celebration of success turned tragic when CEO Sanjay Shah, 56, and the company president, Raju Datla, 52, fell 15 feet in front of a packed audience at a party for employees of Vistex, a software company based in Barrington, Ill.One of the highlights was an aerial show. A specially designed stage made of wood was elevated 20 feet above the concrete stage using a crane. Shah and Datla were in an iron cage.They were supposed to be lowered, but the iron chain supporting the cage broke on one side, causing them to fall 15 feet onto the main stage.A CBS affiliate in India reported that the accident occurred Thursday night with 700 people in attendance to mark Vistex Asia's successful 25 years in business.Shah injured his leg and hand. Datla suffered a severe head injury.Shah died at the hospital, and Datla is in critical condition.The Vistex flag now sits at half-staff in Barrington. Vistex is a multinational software company founded by Shah in 1999.CBS's India affiliate reported that a case has been registered against the Film City Event Management based on a complaint made by someone from the company.Vistex has 20 global offices and more than 2,000 employees\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/textsummary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"textsummary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "textsummary (remote) api-key",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\":\"Once there lived Sheamus, a ruthless king of a large empire.His great, brutal army had helped him in conquering any land coming his way, resulting in extending his empire to far places.His people used to call him, �Sheamus the Great� and also �the invincible King� as no one had ever defeated him.Whenever his huge army moved, either the rival kings ran away to save their lives or surrendered their monarch to save their people from the merciless army of Sheamus.Those days every king used to pray to god to save their kingdom from coming to the notice of Sheamus.One day Sheamus was getting ready to go on a quest of invading a smaller kingdom hidden behind a mountain range.Then, something unexpected happened which was going to change the fate of the invincible Sheamus.Sheamus� beloved son Liam suddenly got severely ill.He wasn�t opening his eyes and was struggling for every breath.Sheamus had never cared for anyone except his son.  Brutal Sheamus was unexpectedly a good father and loved his son a lot.But, now the only person whom he loved was dying in front of his eyes.Liam was suffering from an incurable disease.Sheamus couldn�t watch his son struggling for his every breath.Sheamus� wife and queen Ezina blamed him and said that it was the result of all his sins which had now come as a curse for their child. She believed that God was punishing him for all the bad deeds he did in his whole life.After watching his child�s suffering, Sheamus became insane and more brutal.He killed every physician in his kingdom as they had failed to cure his dying son.Soon, he ordered his guards to abduct all the best physicians from other kingdoms and present them before him.Later, after four days the guards presented before him the twelve best physicians.The abducted men were the most proclaimed physicians from other kingdoms, famous for saving many lives.Sheamus said if his son dies, then he will kill every physician and asked if they want to leave the place alive then they had to save his son�s life.Every physician was given a bag containing all kinds of herbs to prepare any medicine.Soon those miserable and scared magicians of medicine started preparing something to save Sheamus� son�s life as well as their own.At night they all presented before him some medicines except one physician named, Toby.Toby didn�t come with any medicine.King Sheamus got extremely angry to see Toby with empty hands and said, �so you are not interested in saving your life, but don�t think I will give you an easy death�.�King Shemus I have seen this incurable illness earlier�, Toby replied, �I want to tell you a harsh truth, no medicine prepared by my fellow physicians or anyone is enough to save your son�s life so I felt worthless to prepare anything�.�Oh! , you know everything about my child�s illness, so tell me where you had seen this disease earlier and what happened to your patient, did he died like my son will die soon? �, Sheamus asked in his angry voice.�No, he survived, and right now that patient is standing in front of you�, Toby replied.�What do you mean? �, Sheamus asked.�I was that patient who had suffered this disease when I was a young boy and my father had saved my life�, Toby replied.�You knew everything about the cure and now you are telling me all this�, Sheamus got very angry at Toby and continued, �I will take your life right now for your idiotic behavior, just tell me how did your father saved your life and where is he now�.Toby replied, �King Sheamus, my father is no more, but what he did to save me? I think you won�t do that, that is why I thought it worthless to tell you and accepted my fate of death by you�.Sheamus shouted in his heavy voice, �don�t try to puzzle me, explain to me everything clearly how your father had saved you otherwise I am barely holding myself to take your life at any moment�.Toby replied, �King Sheamus I know you will not kill me at least until something happens to your son as I know, right now my life is more valuable after your son�.�Yes�, Sheamus said, �you are right, this is the reason you are still alive and talking to me but not so long. If one more time you tried to puzzle me, I will take your life right now�.�I�m not here to puzzle you�, Toby said, �so you want to know how my father saved my life, then listen he sacrificed his life to save me.�What sacrifice?� Sheamus asked, but this time in a dull voice, �What are you talking about? Tell me clearly?�.Toby said, �outside this kingdom in the jungles of Onuma, grows rare black mushrooms, which can save your child�s life from this incurable disease�.Listening to this the king promptly ordered his guards to bring every black-looking mushroom present in the jungle.Toby said, �King Sheamus, wait, I have to tell you something else�.�I am listening to you�, Sheamus replied, �what do you want more, just tell me?�.Toby said, �King Shemus the rare mushroom only will not save your son but you or the queen.�As anyone from the blood relation of the patient has to eat that rare mushroom and then has to give some drops of his blood in the ill person�s mouth for five days�.�But on the sixth day the person who had eaten the mushroom dies because of the poison present in it, but the patient gets cured completely�.�Oh! So this sacrifice you were talking about�, the King replies to Toby and asks his guards to call the queen.Toby again elaborated everything to the queen.Queen Ezina said, �Dear king Shemus have you forgotten, I�m not your child�s actual mother, you had killed his mother many years ago for deceiving you�.For the first time, the king felt he was not invincible and God was really punishing him for his bad deeds.He soon ordered his guards to release everyone and went to Liam�s room.The abducted physician hurriedly left the place except Toby, who followed Sheamus to his son�s room.Toby saw him crying, regretting, confessing all his sins and blaming himself for his child�s sufferings.At night the guards came with those rare black mushrooms.Sheamus ate those mushrooms and dropped some of his blood into his son�s mouth by cutting his hand.Liam soon started getting better every day and opened his eyes on the fifth day, but on the sixth-day Shemus died leaving all his great empire for the future king.Finally, the brutal king got defeated by his own fate, but a great father won.\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chatbotfuncsapp.azurewebsites.net/api/textsummary?code=e6D2VCzcM9LTntn_W1I4kN8BgAg-YEBLRNgTXuUjuVDwAzFuXj7Mjg==",
+					"protocol": "https",
+					"host": [
+						"chatbotfuncsapp",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"textsummary"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "e6D2VCzcM9LTntn_W1I4kN8BgAg-YEBLRNgTXuUjuVDwAzFuXj7Mjg=="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "textsummary (remote) anonymous",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\":\"Once there lived Sheamus, a ruthless king of a large empire.His great, brutal army had helped him in conquering any land coming his way, resulting in extending his empire to far places.His people used to call him, ”Sheamus the Great” and also ”the invincible King” as no one had ever defeated him.Whenever his huge army moved, either the rival kings ran away to save their lives or surrendered their monarch to save their people from the merciless army of Sheamus.Those days every king used to pray to god to save their kingdom from coming to the notice of Sheamus.One day Sheamus was getting ready to go on a quest of invading a smaller kingdom hidden behind a mountain range.Then, something unexpected happened which was going to change the fate of the invincible Sheamus.Sheamus’ beloved son Liam suddenly got severely ill.He wasn’t opening his eyes and was struggling for every breath.Sheamus had never cared for anyone except his son.  Brutal Sheamus was unexpectedly a good father and loved his son a lot.But, now the only person whom he loved was dying in front of his eyes.Liam was suffering from an incurable disease.Sheamus couldn’t watch his son struggling for his every breath.Sheamus’ wife and queen Ezina blamed him and said that it was the result of all his sins which had now come as a curse for their child. She believed that God was punishing him for all the bad deeds he did in his whole life.After watching his child’s suffering, Sheamus became insane and more brutal.He killed every physician in his kingdom as they had failed to cure his dying son.Soon, he ordered his guards to abduct all the best physicians from other kingdoms and present them before him.Later, after four days the guards presented before him the twelve best physicians.The abducted men were the most proclaimed physicians from other kingdoms, famous for saving many lives.Sheamus said if his son dies, then he will kill every physician and asked if they want to leave the place alive then they had to save his son’s life.Every physician was given a bag containing all kinds of herbs to prepare any medicine.Soon those miserable and scared magicians of medicine started preparing something to save Sheamus’ son’s life as well as their own.At night they all presented before him some medicines except one physician named, Toby.Toby didn’t come with any medicine.King Sheamus got extremely angry to see Toby with empty hands and said, ”so you are not interested in saving your life, but don’t think I will give you an easy death”.“King Shemus I have seen this incurable illness earlier”, Toby replied, “I want to tell you a harsh truth, no medicine prepared by my fellow physicians or anyone is enough to save your son’s life so I felt worthless to prepare anything”.“Oh! , you know everything about my child’s illness, so tell me where you had seen this disease earlier and what happened to your patient, did he died like my son will die soon? ”, Sheamus asked in his angry voice.“No, he survived, and right now that patient is standing in front of you”, Toby replied.“What do you mean? ”, Sheamus asked.“I was that patient who had suffered this disease when I was a young boy and my father had saved my life”, Toby replied.“You knew everything about the cure and now you are telling me all this”, Sheamus got very angry at Toby and continued, ”I will take your life right now for your idiotic behavior, just tell me how did your father saved your life and where is he now”.Toby replied, “King Sheamus, my father is no more, but what he did to save me? I think you won’t do that, that is why I thought it worthless to tell you and accepted my fate of death by you”.Sheamus shouted in his heavy voice, “don’t try to puzzle me, explain to me everything clearly how your father had saved you otherwise I am barely holding myself to take your life at any moment”.Toby replied, “King Sheamus I know you will not kill me at least until something happens to your son as I know, right now my life is more valuable after your son”.“Yes”, Sheamus said, “you are right, this is the reason you are still alive and talking to me but not so long. If one more time you tried to puzzle me, I will take your life right now”.“I’m not here to puzzle you”, Toby said, ”so you want to know how my father saved my life, then listen he sacrificed his life to save me.“What sacrifice?” Sheamus asked, but this time in a dull voice, “What are you talking about? Tell me clearly?”.Toby said, “outside this kingdom in the jungles of Onuma, grows rare black mushrooms, which can save your child’s life from this incurable disease”.Listening to this the king promptly ordered his guards to bring every black-looking mushroom present in the jungle.Toby said, “King Sheamus, wait, I have to tell you something else”.“I am listening to you”, Sheamus replied, ”what do you want more, just tell me?”.Toby said, ”King Shemus the rare mushroom only will not save your son but you or the queen.“As anyone from the blood relation of the patient has to eat that rare mushroom and then has to give some drops of his blood in the ill person’s mouth for five days”.“But on the sixth day the person who had eaten the mushroom dies because of the poison present in it, but the patient gets cured completely”.“Oh! So this sacrifice you were talking about”, the King replies to Toby and asks his guards to call the queen.Toby again elaborated everything to the queen.Queen Ezina said, “Dear king Shemus have you forgotten, I’m not your child’s actual mother, you had killed his mother many years ago for deceiving you”.For the first time, the king felt he was not invincible and God was really punishing him for his bad deeds.He soon ordered his guards to release everyone and went to Liam’s room.The abducted physician hurriedly left the place except Toby, who followed Sheamus to his son’s room.Toby saw him crying, regretting, confessing all his sins and blaming himself for his child’s sufferings.At night the guards came with those rare black mushrooms.Sheamus ate those mushrooms and dropped some of his blood into his son’s mouth by cutting his hand.Liam soon started getting better every day and opened his eyes on the fifth day, but on the sixth-day Shemus died leaving all his great empire for the future king.Finally, the brutal king got defeated by his own fate, but a great father won.\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chatbotfuncsapp.azurewebsites.net/api/textsummary?code=e6D2VCzcM9LTntn_W1I4kN8BgAg-YEBLRNgTXuUjuVDwAzFuXj7Mjg==",
+					"protocol": "https",
+					"host": [
+						"chatbotfuncsapp",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"textsummary"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "e6D2VCzcM9LTntn_W1I4kN8BgAg-YEBLRNgTXuUjuVDwAzFuXj7Mjg=="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "textsummary (remote) api-key (2)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\":\"To apply for a student loan in Canada, you need to follow these steps:Determine your eligibility: To qualify for a Canada Student Grant and/or Loan, you must be a Canadian citizen, a permanent resident of Canada or designated as a protected person. You must also be a permanent resident of a province or territory that issues Canada Student Grants and/or Loans. Additionally, you need to demonstrate financial need and be enrolled in an eligible program at a designated post-secondary school 1.Begin the application process: Apply for a Canada Student Grant and Loan online through the student financial assistance site of your province or territory of permanent residence. The application process may vary depending on your province or territory. Some provinces have their own student financial assistance programs, so make sure to contact your provincial or territorial student financial assistance office for more information 1.Wait for the Notice of Assessment: After submitting your application, you will receive a Notice of Assessment from your province or territory. This notice will indicate if you have qualified for grants and loans. If you are not approved for funding or if you are not satisfied with the approved amount, you can contact the student financial assistance office in your province or territory to be re-assessed 1.Review and accept the Master Student Financial Assistance Agreement (MSFAA): The MSFAA is a legally binding contract that outlines the terms and conditions of your student loan. Review the agreement carefully and make sure you understand your responsibilities and commitments before accepting. You will need to complete and sign the MSFAA online through the National Student Loans Service Centre (NSLSC) website 1.Submit your loan documents: Log in to your NSLSC account and complete the necessary steps to submit your loan documents. This includes providing your banking information for direct deposit 1.Loan disbursement: If you have provided your banking information, your grant(s) or loan(s) will be deposited directly into your financial institution account or forwarded to your school to pay your academic fees. The disbursement of funds typically occurs on or after the first day of classes 1.Remember, it is important to apply for student aid at least two months before the start of your program to ensure you receive your funding on time, if approved 1. Good luck with your application!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chatbotfuncsapp.azurewebsites.net/api/textsummary?code=e6D2VCzcM9LTntn_W1I4kN8BgAg-YEBLRNgTXuUjuVDwAzFuXj7Mjg==",
+					"protocol": "https",
+					"host": [
+						"chatbotfuncsapp",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"textsummary"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "e6D2VCzcM9LTntn_W1I4kN8BgAg-YEBLRNgTXuUjuVDwAzFuXj7Mjg=="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "textsummarynltk (local)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\":\"A horrific accident in India killed a Chicago area tech CEO and seriously injured the company's president, and the whole thing was caught on video. What was designed to be a celebration of success turned tragic when CEO Sanjay Shah, 56, and the company president, Raju Datla, 52, fell 15 feet in front of a packed audience at a party for employees of Vistex, a software company based in Barrington, Ill.One of the highlights was an aerial show. A specially designed stage made of wood was elevated 20 feet above the concrete stage using a crane. Shah and Datla were in an iron cage.They were supposed to be lowered, but the iron chain supporting the cage broke on one side, causing them to fall 15 feet onto the main stage.A CBS affiliate in India reported that the accident occurred Thursday night with 700 people in attendance to mark Vistex Asia's successful 25 years in business.Shah injured his leg and hand. Datla suffered a severe head injury.Shah died at the hospital, and Datla is in critical condition.The Vistex flag now sits at half-staff in Barrington. Vistex is a multinational software company founded by Shah in 1999.CBS's India affiliate reported that a case has been registered against the Film City Event Management based on a complaint made by someone from the company.Vistex has 20 global offices and more than 2,000 employees\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/textsummarynltk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"textsummarynltk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "textsummarynltk (remote)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\":\"A horrific accident in India killed a Chicago area tech CEO and seriously injured the company's president, and the whole thing was caught on video. What was designed to be a celebration of success turned tragic when CEO Sanjay Shah, 56, and the company president, Raju Datla, 52, fell 15 feet in front of a packed audience at a party for employees of Vistex, a software company based in Barrington, Ill.One of the highlights was an aerial show. A specially designed stage made of wood was elevated 20 feet above the concrete stage using a crane. Shah and Datla were in an iron cage.They were supposed to be lowered, but the iron chain supporting the cage broke on one side, causing them to fall 15 feet onto the main stage.A CBS affiliate in India reported that the accident occurred Thursday night with 700 people in attendance to mark Vistex Asia's successful 25 years in business.Shah injured his leg and hand. Datla suffered a severe head injury.Shah died at the hospital, and Datla is in critical condition.The Vistex flag now sits at half-staff in Barrington. Vistex is a multinational software company founded by Shah in 1999.CBS's India affiliate reported that a case has been registered against the Film City Event Management based on a complaint made by someone from the company.Vistex has 20 global offices and more than 2,000 employees\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chatbotfuncsapp.azurewebsites.net/api/textsummarynltk?code=ZAWHWzjEnM31j-oWh8u1_ThELMYULOuXHABwdQrmBWirAzFu_PcuNQ==",
+					"protocol": "https",
+					"host": [
+						"chatbotfuncsapp",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"textsummarynltk"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "ZAWHWzjEnM31j-oWh8u1_ThELMYULOuXHABwdQrmBWirAzFu_PcuNQ=="
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
