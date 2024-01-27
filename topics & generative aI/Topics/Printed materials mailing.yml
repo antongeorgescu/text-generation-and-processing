@@ -3,7 +3,7 @@ beginDialog:
   kind: OnRecognizedIntent
   id: main
   intent:
-    displayName: [TBD] A topic with a condition, variables and a pre-built entity
+    displayName: Mail studenet lending personal documentation and printed materials
     triggerQueries:
       - student loan documentation by mail
       - mail printed materials

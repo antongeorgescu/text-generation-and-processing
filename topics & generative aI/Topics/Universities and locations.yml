@@ -3,7 +3,7 @@ beginDialog:
   kind: OnRecognizedIntent
   id: main
   intent:
-    displayName: [TBD] A simple topic with a condition and variable
+    displayName: Share trhe addresses of universities and colleges for selected location
     triggerQueries:
       - good university near me
       - universities or colleges near by
