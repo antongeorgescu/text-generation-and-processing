@@ -16,11 +16,17 @@ beginDialog:
 
     - kind: SendActivity
       id: 6Jn5pw
-      activity: |-
-        The Call Centre hours are:
-        - Mon-Fri: 9am to 6pm
-        - Sat: 10am to 4pm
-        - Sun: Closed
+      activity:
+        text:
+          - |-
+            The Call Centre hours are:
+            - Mon-Fri: 9am to 6pm
+            - Sat: 10am to 4pm
+            - Sun: Closed
+        attachments:
+          - kind: ImageCardTemplate
+            title: Ontario Call Centres
+            image: https://th.bing.com/th/id/OIP.cz7DyETWD5UmR84YkaAyYgHaFL?w=188&h=180&c=7&r=0&o=5&pid=1.7
 
     - kind: BeginDialog
       id: Dj0B0N
