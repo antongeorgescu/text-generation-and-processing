@@ -1,0 +1,56 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Test text summary
+    triggerQueries:
+      - test chat summary
+      - chat summary testing
+      - chat summary
+      - story summary
+      - article summary
+      - Salut
+
+  actions:
+    - kind: SendActivity
+      id: sendActivity_KjQzL9
+      activity: I'd be more than gladly to help you with that  request. 
+
+    - kind: Question
+      id: question_G8ntzp
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.StoryText
+      prompt: Can you please enter the body of the story or article you want to get a summary for?
+      entity: StringPrebuiltEntity
+
+    - kind: HttpRequestAction
+      id: zT0BQV
+      method: Post
+      url: https://chatbotfuncsapp.azurewebsites.net/api/textsummary2
+      body:
+        kind: RawRequestContent
+        contentType: application/json
+        content: =JSON({text:Topic.StoryText})
+
+      errorHandling: {}
+      requestTimeoutInMilliseconds: 30000
+      response: Topic.StorySummary2
+      responseSchema: String
+      responseHeaders: Topic.StorySummary
+
+    - kind: SendActivity
+      id: sendActivity_CzJp3H
+      activity: "This is the generated summary: {Topic.StorySummary2}"
+
+    - kind: SendActivity
+      id: sendActivity_csjN0F
+      activity: Thank you for using Roboloaner services!
+
+outputType:
+  properties:
+    StorySummary2:
+      displayName: StorySummary2
+      type: String 

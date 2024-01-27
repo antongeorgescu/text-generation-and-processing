@@ -12,18 +12,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         text = req.params.get('text')
         if not text:
             try:
-                body_bytes = req.get_body()
-                body_json = body_bytes.decode('utf8').replace("\\'",'\\').replace("\\","")
-                logging.info(f"Body bytes:{body_json}")
-                
-                # Load the JSON to a Python list & dump it back out as formatted JSON
-                req_data = json.loads(body_json)
-                text = req_data.get('text')
-                logging.info(f"Body text:{text}")
+                req_body = req.get_body()
+                text = json.loads(req_body).get('text')
             except ValueError:
                 pass
         else:
-            text = req.get_body().get('text')
+            text = req_body.get('text')
 
         if text:
             # Load your API key from an environment variable or secret management service
@@ -48,7 +42,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 presence_penalty=0,
                 stop=None
             )
-            logging.info(f"This HTTP triggered function returned result {response.choices[0].message.content}")
+            logging.info(f'Python HTTP trigger function returned result:{response.choices[0].message.content}')
             return func.HttpResponse(response.choices[0].message.content)
         else:
             logging.error(f"This HTTP triggered function failed due to 'text' = {text}")

@@ -8,6 +8,7 @@
     "AZURE_OPENAI_API_KEY":"fd2e0aa746cf48efa326e6c360915d88",
     "AZURE_OPENAI_API_BASE":"https://openai-arch-v.openai.azure.com/",
     "AZURE_OPENAI_DEPLOYMENT_NAME":"slp-chatbot-text-summary",
-    "AZURE_SUBSCRIPTION_ID": "bfb59099-69db-4d2b-887e-abcf6ccdb5c4"
+    "AZURE_SUBSCRIPTION_ID": "bfb59099-69db-4d2b-887e-abcf6ccdb5c4",
+    "APPINSIGHTS_INSTRUMENTATIONKEY":"8460803a-a37a-4a10-ac35-92fb2edd4d13"
   }
 }

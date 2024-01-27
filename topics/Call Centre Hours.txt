@@ -1,0 +1,27 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Call Centre hours
+    triggerQueries:
+      - When is your Call Centre open
+      - Call Centre hours
+      - Is your Call Centre open over the weekend?
+
+  actions:
+    - kind: SendActivity
+      id: Ystyaa
+      activity: I'm happy to help with Story Centre hours
+
+    - kind: SendActivity
+      id: 6Jn5pw
+      activity: |-
+        The Call Centre hours are:
+        - Mon-Fri: 9am to 6pm
+        - Sat: 10am to 4pm
+        - Sun: Closed
+
+    - kind: BeginDialog
+      id: Dj0B0N
+      dialog: Default_alvipilot1.topic.EndofConversation
