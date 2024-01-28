@@ -3,7 +3,7 @@ beginDialog:
   kind: OnRecognizedIntent
   id: main
   intent:
-    displayName: Mail studenet lending personal documentation and printed materials
+    displayName: A topic with Http Request from Azure Python function, a few conditions, variables and record types
     triggerQueries:
       - student loan documentation by mail
       - mail printed materials
@@ -16,28 +16,63 @@ beginDialog:
       activity: I am happy to help with the mailing of our materials
 
     - kind: Question
-      id: eRH3BJ
-      alwaysPrompt: false
-      variable: init:Topic.Province
-      prompt: Where do you want to mail the review?
-      entity:
-        kind: RegexEntityReference
-        entityId: Default_alvipilot1.entity.Province
+      id: question_PYYBtF
+      interruptionPolicy:
+        allowInterruption: true
+
+      variable: init:Topic.SinID
+      prompt: Before proceeding with youtr mailing order, I need you to share with me your personal identifier.
+      entity: StringPrebuiltEntity
+
+    - kind: SendActivity
+      id: sendActivity_NBXDBW
+      activity: You typed {Topic.SinID}
+
+    - kind: HttpRequestAction
+      id: kGtURx
+      method: Post
+      url: https://chatbotfuncsapp.azurewebsites.net/api/userAccountInfo?sin=123456789
+      body:
+        kind: RawRequestContent
+        contentType: application/json
+        content: JSON({sin:Topic.SinID})
+
+      response: Topic.Address
+      responseSchema: String
+
+    - kind: ParseValue
+      id: 72HHbS
+      variable: Topic.AddressRecord
+      valueType:
+        kind: Record
+        properties:
+          address: String
+          name: String
+          province: String
+          sin: String
+
+      value: =Topic.Address
+
+    - kind: SendActivity
+      id: sendActivity_CtEqpa
+      activity: |-
+        I will mail the requested materials at the address: {Topic.AddressRecord.name}
+        {Topic.AddressRecord.address} 
 
     - kind: ConditionGroup
       id: sEzulE
       conditions:
         - id: pbR5LO
-          condition: =Topic.Province = "Ontario" || Topic.Province = "Quebec" || Topic.Province = "Oregon"
+          condition: =Topic.AddressRecord.province = Blank() || Topic.AddressRecord.province = Blank() || Topic.AddressRecord.province = Blank()
           actions:
             - kind: SendActivity
               id: sendActivity_0w5Jnn
-              activity: The mailing will be free of charge for the province of {Topic.Province}
+              activity: The mailing will be free of charge for the province of {Topic.AddressRecord}
 
       elseActions:
         - kind: SendActivity
           id: X7BFUC
-          activity: There will be an additional shipping charge of $27.50.
+          activity: For the province of {Topic.AddressRecord.province}  there will be an additional shipping charge of $27.50.
 
         - kind: Question
           id: 6lyBi8
