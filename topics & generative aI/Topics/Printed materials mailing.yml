@@ -31,11 +31,11 @@ beginDialog:
     - kind: HttpRequestAction
       id: kGtURx
       method: Post
-      url: https://chatbotfuncsapp.azurewebsites.net/api/userAccountInfo?sin=123456789
+      url: https://chatbotfuncsapp.azurewebsites.net/api/userAccountInfo
       body:
         kind: RawRequestContent
         contentType: application/json
-        content: JSON({sin:Topic.SinID})
+        content: =JSON({sin:Topic.SinID})
 
       response: Topic.Address
       responseSchema: String

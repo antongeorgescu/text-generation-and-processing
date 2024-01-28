@@ -10,12 +10,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     sinid = req.params.get('sin')
     if not sinid:
         try:
-            req_body = req.get_json()
-            sinid = req_body.get('sin')
+            req_body = req.get_body()
+            sinid = json.loads(req_body).get('sin')
         except ValueError:
             pass
-        else:
-            sinid = req_body.get('sin')
+    else:
+        sinid = req_body.get('sin')
 
     if sinid:
         # Load the JSON array into a Python list
@@ -26,7 +26,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         # Check if an item with the specified attribute value exists
         user = next((item for item in userdata if item.get(attribute) == value),None)
         if user:
-            # return func.HttpResponse('{"name":"' + {user["name"]} + '","address":"' + {user["address"]} + '","province":"' + {user["province"]} + '"}')  
             return func.HttpResponse(json.dumps(user))  
         else: 
             logging.info(f"No user found with sin:{sinid}.")
