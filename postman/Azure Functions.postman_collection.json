@@ -368,6 +368,79 @@
 			"response": []
 		},
 		{
+			"name": "userAccountInfo (remote)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"sin\":\"123456789\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://chatbotfuncsapp.azurewebsites.net/api/userAccountInfo",
+					"protocol": "https",
+					"host": [
+						"chatbotfuncsapp",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"userAccountInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userAccountInfo (local)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-key",
+						"value": "fd2e0aa746cf48efa326e6c360915d88",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"sin\":\"123456789\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/userAccountInfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"userAccountInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "textsummary (remote) anonymous",
 			"event": [
 				{
