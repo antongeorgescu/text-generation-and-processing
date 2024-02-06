@@ -2,28 +2,24 @@ import logging
 import os
 import openai
 import json
-
 import azure.functions as func
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         logging.info('Python HTTP trigger function processed a request.')
 
-        text = req.params.get('text')
-        if not text:
+        chat = req.params.get('text')
+        if not chat:
             try:
-                body_bytes = req.get_body()
-                body_json = body_bytes.decode('utf8').replace("\\'",'\\').replace("\\","").replace('"{','{').replace('}"','}')
-                # logging.info(f"Body bytes:{body_json}")
-                
-                text = json.loads(body_json).get("text")
-                logging.info(f"Body text:{text}")
+                req_body = req.get_body()
+                chat = json.loads(req_body).get('text')
             except ValueError:
                 pass
         else:
-            text = req.get_body().get('text')
+            chat = req_body.get('text')
 
-        if text:
+        if chat:
+
             # Load your API key from an environment variable or secret management service
             openai.api_type = "azure"
             openai.api_base = os.getenv("AZURE_OPENAI_API_BASE")
@@ -33,7 +29,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             SYSTEM_ROLE = "You are an AI assistant that helps people find information."
             USER_PROMPT = "Provide a summary of the text below that captures its main idea."
 
-            message_text = [{"role":"system","content":f"{SYSTEM_ROLE}"},{"role":"user","content":f"{USER_PROMPT}\\n\\n{text}"}]
+            message_text = [{"role":"system","content":f"{SYSTEM_ROLE}"},{"role":"user","content":f"{USER_PROMPT}\\n\\n{chat}"}]
 
             # Make a request to the API
             response = openai.ChatCompletion.create(
@@ -46,17 +42,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 presence_penalty=0,
                 stop=None
             )
-            logging.info(f"This HTTP triggered function returned result {response.choices[0].message.content}")
-            summary = '{"summary":"' + response.choices[0].message.content + '"}'
-            return func.HttpResponse(summary,status_code=200)
-        
+            logging.info(f'Python HTTP trigger function returned result:{response.choices[0].message.content}')
+            return func.HttpResponse(response.choices[0].message.content)
         else:
-            logging.error(f"This HTTP triggered function failed due to 'text' = {text}")
+            logging.error(f"This HTTP triggered function failed due to 'text' = {chat}")
             return func.HttpResponse(
-                '{"error" :' + f"This HTTP triggered function failed due to 'text' = {text}" + '"}',
+                f"This HTTP triggered function failed due to 'text' = {chat}",
                 status_code=422
             )
     except Exception as e:
         logging.error(f"An exception occurred: {e}")
-        return func.HttpResponse('{"error" :' + f"An exception occurred: {e}"+ '"}',status_code=500)
+        return func.HttpResponse(f"An exception occurred: {e}",status_code=500)
         
