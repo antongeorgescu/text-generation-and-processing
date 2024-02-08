@@ -1,0 +1,65 @@
+kind: AdaptiveDialog
+modelDescription: "This tool can handle queries like these: good university near me, universities or colleges near by, find a college, universities near me, near by university"
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Universities locations
+    triggerQueries:
+      - good university near me
+      - universities or colleges near by
+      - find a college
+      - universities near me
+
+  actions:
+    - kind: SendActivity
+      id: qvduia
+      activity: I'd be glad to help find a education institution close to where you live.
+
+    - kind: Question
+      id: LbWwpD
+      alwaysPrompt: true
+      variable: init:Topic.EILocation
+      prompt: Which location are you interested in?
+      entity:
+        kind: EmbeddedEntity
+        definition:
+          kind: ClosedListEntity
+          smartMatchingEnabled: true
+          items:
+            - id: Oakville
+              displayName: Oakville
+
+            - id: Mississauga
+              displayName: Mississauga
+
+            - id: Guelph
+              displayName: Guelph
+
+    - kind: ConditionGroup
+      id: HE6JRU
+      conditions:
+        - id: 6G9Hhn
+          condition: =Topic.EILocation = 'Default_alvipilot1.topic.Lesson2.main.LbWwpD'.Oakville
+          actions:
+            - kind: SendActivity
+              id: khIIPE
+              activity: "In {Topic.EILocation} there is Sheridan College Trafalgar Road Campus. The address is: 4567 Main St., Oakville, L5J 4D3"
+
+        - id: dqf7pu
+          condition: =Topic.EILocation = 'Default_alvipilot1.topic.Lesson2.main.LbWwpD'.Mississauga
+          actions:
+            - kind: SendActivity
+              id: X7eulp
+              activity: "Top university in {Topic.EILocation} is University of Toronto, Mississauga Campus.The address is: 1234 E. University Village St., Mississauga, N6D 3H6."
+
+        - id: 1QMrFE
+          condition: =Topic.EILocation = 'Default_alvipilot1.topic.Lesson2.main.LbWwpD'.Guelph
+          actions:
+            - kind: SendActivity
+              id: jtQo0O
+              activity: Best known superior education institution in {Topic.EILocation} is U of Guelph, but is currently closed, for renovations.
+
+    - kind: BeginDialog
+      id: mJXqqY
+      dialog: Default_alvipilot1.topic.EndofConversation

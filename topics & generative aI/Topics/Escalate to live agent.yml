@@ -1,0 +1,22 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - speak to a live agent
+      - talk to a human
+      - get me a real person
+      - escalate my issue
+      - connect me with an agent
+      - need assistance from a live representative
+      - transfer me to a customer service representative
+      - take me to a live agent
+
+  actions:
+    - kind: SendActivity
+      id: SendActivity_9E5s1T
+      activity: I'm sorry, but I'm unable to assist with that request. Let me connect you with a live agent for further assistance.
+
+    - kind: TransferConversationV2
+      id: FQBO0y

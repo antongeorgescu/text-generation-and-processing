@@ -1,4 +1,4 @@
-kind: AdaptiveDialog
+kkind: AdaptiveDialog
 beginDialog:
   kind: OnRecognizedIntent
   id: main
@@ -53,4 +53,4 @@ outputType:
   properties:
     StorySummary2:
       displayName: StorySummary2
-      type: String 
+      type: String

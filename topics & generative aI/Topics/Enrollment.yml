@@ -1,0 +1,33 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  priority: 1
+  intent:
+    triggerQueries:
+      - enrollment process
+      - how to enroll
+      - sign up for enrollment
+      - enrollment requirements
+      - enrollment deadline
+      - can I still enroll?
+      - enrollment options
+      - enroll now
+      - is enrollment open?
+      - do I need to apply for enrollment?
+      - to enroll in a program of studies
+      - post secondary institution
+      - get enrolled
+
+  actions:
+    - kind: SendActivity
+      id: SendActivity_Sk44hr
+      activity: |-
+        To get a student loan, you typically need to meet the following conditions:
+        
+        1. Be enrolled in an eligible study program.
+        2. Be a citizen or permanent resident of the country where the loan is being offered.
+        3. Have a good credit history or provide a cosigner with good credit.
+        4. Meet any income requirements set by the loan provider.
+        
+        Please note that the specific conditions may vary depending on the country and the loan program. It is recommended to contact the loan provider or visit their website for detailed information.

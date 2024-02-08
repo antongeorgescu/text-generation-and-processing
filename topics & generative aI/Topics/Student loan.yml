@@ -1,0 +1,26 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - student loan
+      - loan for students
+      - financial aid for college
+      - repaying student loans
+      - student loan forgiveness
+      - how to apply for student loan
+      - managing student debt
+      - student loan interest rates
+      - qualify for a student loan
+
+  actions:
+    - kind: SendActivity
+      id: sendActivity_EkCVGD
+      activity: |-
+        Taking a student loan can be a big financial commitment. It's important to carefully consider your ability to pay it back. If you're unable to pay back your student loan, here are some alternatives you can explore:
+        1. Income-driven repayment plans: These plans adjust your monthly loan payments based on your income.
+        2. Loan forgiveness programs: Some professions or public service jobs offer loan forgiveness programs.
+        3. Refinancing or consolidation: You may be able to refinance or consolidate your loans to get a lower interest rate or more manageable repayment terms.
+        
+        It's recommended to consult with a financial advisor or student loan counselor to discuss your specific situation and explore the best options for you.
